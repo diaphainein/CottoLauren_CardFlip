@@ -1,0 +1,92 @@
+$card-width: 100px;
+$card-height: 140px;
+
+body {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: #1C531D;
+
+  h1 {
+    color: #fff;
+  }
+}
+
+#game-board {
+  display: grid;
+  grid-template-columns: repeat(3, $card-width);
+  gap: 15px;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.card {
+  width: $card-width;
+  height: $card-height;
+  perspective: 1000px;
+  cursor: pointer;
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+    transform-style: preserve-3d;
+  }
+
+  &.flipped .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-front {
+    background: linear-gradient(135deg, #f8f8f8, #ddd);
+    color: #333;
+    transform: rotateY(180deg);
+  }
+
+  .card-back {
+    background: url("../public/assets/card-flip-card-image.png") center/cover no-repeat;
+  }
+}
+
+#status {
+  font-weight: bold;
+  margin: 10px 0;
+  color: #fff;
+}
+
+.message {
+  font-size: 1.5rem;
+  margin: 15px 0;
+  color: #fff;
+}
+
+#restart-btn {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  background: #238AB6;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+
+  &:hover {
+    text-decoration: underline;
+    transform: scale(1.05);
+  }
+}
