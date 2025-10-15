@@ -21,23 +21,21 @@ type Card = {
   matched: boolean;
 };
 
-// MAX_ATTEMPTS and attemptsLeft do not need declared types due to type inference
 // max attempts are 3
-const MAX_ATTEMPTS = 3;
+const MAX_ATTEMPTS: number = 3;
 // attempts left
-let attemptsLeft = MAX_ATTEMPTS;
+let attemptsLeft: number = MAX_ATTEMPTS;
 // stores all cards currently in the game
 let deck: Card[] = [];
 // tracks currently flipped cards
 let flippedCards: Card[] = [];
-// gameOver and isBusy do not need declared types due to type inference
-let gameOver = false;
+let gameOver: boolean = false;
 // prevent spam clicks and/or program crash while wrongly matched cards "flip" back over
-let isBusy = false;
+let isBusy: boolean = false;
 
 // deck creation - 3 random pairs
 function createDeck(): Card[] {
-  let idCounter = 1;
+  let idCounter: number = 1;
   const faces = Object.values(CardFace);
   const chosenFaces = faces.sort(() => 0.5 - Math.random()).slice(0, 3);
 
